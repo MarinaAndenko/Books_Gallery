@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 123
+  host: localhost
+  port: 3000
+
+development:
+  <<: *default
+  database: books_db
+
+test:
+  <<: *default
+  database: books_db_test
+
+production:
+  <<: *default
+  database: books_db_production
+  password: <%= ENV['BOOKS_DB_PRODUCTION_PASSWORD'] %>
