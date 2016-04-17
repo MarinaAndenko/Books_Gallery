@@ -16,7 +16,11 @@
 }
 .description
 {
-	font-size: 16pt;
+	font-size: 14pt;
+}
+.description-all
+{
+	font-size: 12pt;
 }
 .attributes
 {
@@ -124,4 +128,24 @@ a
 {
 	position: relative;
 	width: 80%;
+}
+.color-table
+{
+	font-size: 14pt;
+}
+.button-save-role
+{
+	border-radius: 8px !important;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.genre
+{
+	position: relative;
+	float: left;
+}
+.block-delete
+{
+	position: relative;
+	float: right;
 }

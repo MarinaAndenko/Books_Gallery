@@ -11,9 +11,14 @@
     <%= menu_group do %>
         <%= menu_item "Home", root_path, class: current(root_path) %>
         <%= menu_item "All Books", books_path, class: current(books_path) %>
-        <%= menu_item "User Books", user_books_path, class: current(user_books_path) %>
-        <%= menu_item "User Drafts", drafts_path, class: current(drafts_path) %>
-        <%= menu_item "Add New Book", new_book_path, class: current(new_book_path) %>
+        <% if !user_signed_in? || !current_user.admin? %>
+          <%= menu_item "User Books", user_books_path, class: current(user_books_path) %>
+          <%= menu_item "User Drafts", drafts_path, class: current(drafts_path) %>
+          <%= menu_item "Add New Book", new_book_path, class: current(new_book_path) %>
+        <% else %>
+          <%= menu_item "Add new genre", add_genre_path, class: current(add_genre_path) %>
+          <%= menu_item "Edit user role", edit_user_role_path, class: current(edit_user_role_path) %>
+        <% end %>
     <% end %>
     <%= menu_group pull: :right do %>
         <% if user_signed_in? %>
@@ -24,6 +29,7 @@
         <% end %>
     <% end %>
 <% end %>
+
 <div class = "field" >
 	<%= yield %>
 </div>

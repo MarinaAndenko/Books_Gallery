@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
          :validatable, :confirmable
   has_many :books
   validates_uniqueness_of :email
+  enum role:  
+  {
+      user: 'user',
+      admin: 'admin'
+  }
 end

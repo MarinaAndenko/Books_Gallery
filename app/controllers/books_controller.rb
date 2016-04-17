@@ -32,13 +32,12 @@ class BooksController < ApplicationController
     @genres = Genre.all
     if @book.save
       @genres.each do |genre|
-        if params['genres-yes'].include? genre.id.to_s
-          b_genre = @book.genres.where("genre_id = #{genre.id}")
-          if b_genre == []
+        if params['genres-yes']!=nil 
+          if params['genres-yes'].include? genre.id.to_s
             b_genre = @book.book_genres.new(genre_id: genre.id)
             b_genre.save
-          end 
-        end
+          end
+        end 
       end 
       redirect_to book_path(@book)
     else
@@ -54,7 +53,6 @@ class BooksController < ApplicationController
     @genres = Genre.all
     if params['remove_image']=='true'
       @book.remove_image!
-      #@book.remove_image = true
     end
     if @book.update(book_params)
       @genres.each do |genre| 

@@ -13,4 +13,20 @@ $(function($)
       reader.readAsDataURL(file);
     });
   });
+
+  $(document).on('ajax:success', '#genre-delete', function(e, data, status, xhr) {
+    if('genre' in data){
+      this.parentNode.parentNode.remove();
+    }
+  });
+
+  $(document).on('ajax:success', 'form', function(e, data, status, xhr) {
+    if ('genre' in data) {
+      var parent_node = document.getElementById("genre-list");
+      var child_node = document.createElement('div');
+      child_node.innerHTML=data.genre;
+      parent_node.appendChild(child_node.childNodes[0]);
+      $("#genre-field").val("");
+    }
+  });
 });
