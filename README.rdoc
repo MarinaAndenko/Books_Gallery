@@ -1,28 +1,18 @@
-== README
+INFORMATION ABOUT DEVELOPMENT AND PRODUCTION OF THE APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) Schema of db
+ App has 4 entities: users, books, genres and book_genres, which hold foreign keys of books and genres tables. Users and
+ books have one to many relation. Books and genres have many to many relation through book_genres.   
 
-Things you may want to cover:
+2) Fuctional
+  Non-authorisated user has access only to home page and then he must log in or sign up. 
+  Authorisated user can look through all books which were created during last week and add own books. Also he can add book to drafts. While book is draft, anyone can not access it except the author. User can adit and delete only his own books. 
+  Adminisrator can edit and destroy any books except user drafts, which are not able to adminisrator too. Adminisrator can manage user roles and give privileges to other users to be an adminisrators. Also admin add new genres to the list of genres, which later available for users to select.
 
-* Ruby version
+3) Developmant 
+  During development MySql db was managed. Such gems as: devise, twitter-bootstrap-rails, mini-magick, carrierwave were used for realization of specific tasks. Ajax technology was used to add and delete genres by adminisrator
+  
+4) Production
+  During deployment on heroku db was changed to PostgreSql.
+  
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
