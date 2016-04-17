@@ -1,22 +1,22 @@
 
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  username: root
+  username: marina
   password: 123
   host: localhost
-  port: 3000
+  port: 5432
+  timeout: 5000
 
 development:
   <<: *default
-  database: books_db
+  database: books_db_production
 
 test:
   <<: *default
-  database: books_db_test
+  database: books_db_production
 
 production:
   <<: *default
-  database: books_db_production
-  password: <%= ENV['BOOKS_DB_PRODUCTION_PASSWORD'] %>
+  database: psql_db_production
