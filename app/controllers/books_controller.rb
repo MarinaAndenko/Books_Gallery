@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   end
 
   def drafts
-    @books = Book.where("draft = true && user_id = #{current_user.id}")
+    @books = Book.where("draft = true AND user_id = #{current_user.id}")
     render 'index'
   end 
 
